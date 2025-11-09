@@ -62,15 +62,14 @@ onMounted(() => {
           <img class="storeLogo" :src="shop.logo" alt="logo" />
         </div>
 
-        <!-- Main image -->
         <img v-if="shop.image" :src="shop.image" alt="shop image" class="shopImage" />
 
-        <!-- Address -->
+
         <p class="shopAddress">{{ shop.address }}</p>
       </div>
     </div>
 
-    <!-- Animated loader -->
+
     <div v-if="loading" class="loader"></div>
   </section>
 </template>
@@ -108,18 +107,19 @@ onMounted(() => {
   transform: translateY(-5px);
 }
 
-/* Header: logo + name */
+
 .cardHeader {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 12px;
-  flex-direction: row-reverse; /* RTL: logo right, name left */
+  flex-direction: row-reverse;
 }
 
 .storeName {
-  font-size: 1rem;
-  margin: 0 8px 0 0; /* space between name and logo */
+  font-size: 1.2rem;
+  margin: 0 8px 0 0;
+  font-weight: 100;
 }
 
 .storeLogo {
@@ -129,7 +129,7 @@ onMounted(() => {
   border-radius: 50%;
 }
 
-/* Main image */
+
 .shopImage {
   width: 100%;
   height: 150px;
@@ -138,14 +138,14 @@ onMounted(() => {
   margin-bottom: 10px;
 }
 
-/* Address */
+
 .shopAddress {
   font-size: 0.9rem;
   color: #ccc;
   text-align: right;
 }
 
-/* Animated loader */
+
 .loader {
   display: inline-grid;
   padding: 5px;
