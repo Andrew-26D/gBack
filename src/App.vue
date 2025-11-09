@@ -7,16 +7,16 @@ import topBanner from '../src/template/GB_HEADER.5bbb1a2.gif'
 import mGlass from '../src/template/mGlass.svg'
 import webForm from '../src/template/download (2).svg'
 import minimalLogo from '../src/template/logo_gback_loan.669db76.svg'
-
+import ShopList from '../src/ShopList.vue'
 
 
 const hideHeader = ref(false)
 let lastScrollY = 0
 const handleScroll = () => {
   if (window.scrollY > lastScrollY) {
-    hideHeader.value = true  
+    hideHeader.value = true
   } else {
-    hideHeader.value = false 
+    hideHeader.value = false
   }
   lastScrollY = window.scrollY
 }
@@ -35,7 +35,7 @@ onUnmounted(() => {
 
 <template>
 <header>
-  
+
     <div class="header-t"><a href="https://app.gback.ir/?rf=gback.ir" target="blank"><img :src="topBanner" alt=""></a> </div>
     <div class="header-m">
         <article> <button class="header-btn"><a href="https://app.gback.ir/?rf=gback.ir" target="blank">دریافت وام</a></button></article>
@@ -49,7 +49,7 @@ onUnmounted(() => {
             <button>انتخاب استان</button>
               <img :src="locationBtn" alt="">
             </section>
-            
+
         </article>
     <article class="logo"><a href="https://gback.ir/" target="_blank"> <img :src="logo" alt=""></a></article>
     </div>
@@ -71,9 +71,7 @@ onUnmounted(() => {
     </div>
 </header>
 <div class="body">
-  <section class="shopList">
-
-  </section>
+  <ShopList />
   <section >
     <ul class="categories">
       <li class="items" > <p>دسته بندی ها</p> </li>
@@ -86,7 +84,7 @@ onUnmounted(() => {
 </div>
 
 <footer class="footer">
-  <section> 
+  <section>
     <img :src="minimalLogo" alt="">
     <article>
       <a href="" class="government"><img src="" alt=""> </a>
@@ -96,7 +94,7 @@ onUnmounted(() => {
 
 
   <section class="footer-links">
-<ul> 
+<ul>
   <li><a href="https://gback.ir/blog/">بلاگ</a></li>
   <li><a href="https://gback.ir/about" target="blank">درباره ما</a></li>
   <li><a href="https://gback.ir/storedetail" target="blank">فروشگاه ها</a></li>
@@ -220,7 +218,7 @@ color: white;
     border-left: white 1.1px solid;
     margin-left: 15px ;
      cursor: pointer;
-  
+
 }
 .locationBtn button{
       background-color:rgba(255, 255, 255, 0);
@@ -266,7 +264,7 @@ color: white;
   justify-content: space-between;
   align-items: center;
   font-family: 'Yekan', sans-serif;
-  
+
 }
 .header-b.hide {
   transform: translateY(-100%);
@@ -335,7 +333,7 @@ border: #d9846d00 2px solid;
   display: flex;
   justify-content: flex-end;
   background-color:#232122 ;
-  height:1860px ;
+  height:100% ;
   width: 100%;
   margin-top: 180px;
   padding: 150px 80px 0px 200px;
@@ -361,18 +359,12 @@ direction: rtl;
 .items{
   padding: 8px 12px;
   border-bottom: 1px solid #444;
-  
+
 }
 .items:last-child,.items:first-child {
   border-bottom: none;
 }
-.shopList{
-  width: 80%;
-  height: 400px;
-  background-color:#ff0000 ;
-  color: white;
-  margin: 20px;
-}
+
 .footer{
   display: flex;
   justify-content: space-between;
