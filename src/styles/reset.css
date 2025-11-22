@@ -16,6 +16,9 @@ body,
     min-height: 100vh;
     overflow-x: hidden;
 }
+.d{
+    text-shadow: 0 0 0 red;
+}
 
 body {
     position: relative;

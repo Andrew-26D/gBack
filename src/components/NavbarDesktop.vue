@@ -1,14 +1,10 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
-import logo from '../src/template/لوگو_وام_فوری_جیبک.3fd5cee.svg'
-import telegram from '../src/template/download (1).svg'
-import locationBtn from '../src/template/download.svg'
-import topBanner from '../src/template/GB_HEADER.5bbb1a2.gif'
-import mGlass from '../src/template/mGlass.svg'
-import webForm from '../src/template/download (2).svg'
-import minimalLogo from '../src/template/logo_gback_loan.669db76.svg'
-import ShopList from '../src/ShopList.vue'
-
+import logo from '../assets/gbackLogoNavbar.svg'
+import telegram from '../assets/telegramLogo.svg'
+import locationBtn from '../assets/locationLogo.svg'
+import topBanner from '../assets/gbackGifHeader.gif'
+import mGlass from '../assets/mGlass.svg'
 
 const hideHeader = ref(false)
 let lastScrollY = 0
@@ -28,22 +24,23 @@ onMounted(() => {
 onUnmounted(() => {
   window.removeEventListener('scroll', handleScroll)
 })
-
-
 </script>
 
 
-<template>
-<header>
 
-    <div class="header-t"><a href="https://app.gback.ir/?rf=gback.ir" target="blank"><img :src="topBanner" alt=""></a> </div>
-    <div class="header-m">
-        <article> <button class="header-btn"><a href="https://app.gback.ir/?rf=gback.ir" target="blank">دریافت وام</a></button></article>
+<template>
+    <header>
+  <div class="header-t"><a href="https://app.gback.ir/?rf=gback.ir" target="blank"><img :src="topBanner" alt=""></a> </div>
+ <div class="header-m">
+  <section>
+    <article><button class="header-btn"><a href="https://app.gback.ir/?rf=gback.ir" target="_blank"> دریافت وام</a></button></article>
+  </section>
 
         <article class="search">
+
               <section class="inputSearch">
                 <input type="text" placeholder="جستجوی فروشگاه و کالا" dir="rtl">
-                <img :src="mGlass" alt="">
+                    <img :src="mGlass" alt="">
               </section>
             <section  class="locationBtn">
             <button>انتخاب استان</button>
@@ -51,11 +48,16 @@ onUnmounted(() => {
             </section>
 
         </article>
-    <article class="logo"><a href="https://gback.ir/" target="_blank"> <img :src="logo" alt=""></a></article>
+
+        <article class="logo"><a href="https://gback.ir/" target="_blank"> <img :src="logo" alt=""></a></article>
     </div>
+
+
+
  <div class="header-b" :class="{ hide: hideHeader }">
         <section class="lSide">
-            <button><a href="https://app.gback.ir/?rf=gback.ir" target="_blank"> ورود فروشندگان</a></button>
+
+            <article><button class="seller"><a href="https://app.gback.ir/?rf=gback.ir" target="_blank"> ورود فروشندگان</a></button></article>
             <a  class="lSide"  href="https://app.gback.ir/?rf=gback.ir " target="blank">
                 <p>پشتیبانی آنلاین</p>
                  <img :src="telegram" alt="">
@@ -70,57 +72,7 @@ onUnmounted(() => {
         </section>
     </div>
 </header>
-<div class="body">
-  <ShopList />
-  <section >
-    <ul class="categories">
-      <li class="items" > <p>دسته بندی ها</p> </li>
-      <li class="items"> <a href="https://gback.ir/storedetail?id=1">لوازم خانگی</a></li>
-      <li class="items"> <a href="https://gback.ir/storedetail?id=2"> کالای دیجیتال</a></li>
-      <li class="items"> <a href="https://gback.ir/storedetail?id=3">طلا و جواهرات</a></li>
-      <li class="items"> <a href="https://gback.ir/storedetail?id=4">فرش</a></li>
-    </ul>
-  </section>
-</div>
-
-<footer class="footer">
-  <section>
-    <img :src="minimalLogo" alt="">
-    <article>
-      <a href="" class="government"><img src="" alt=""> </a>
-      <a href="" class="government"> <img src="" alt=""></a>
-    </article>
-  </section>
-
-
-  <section class="footer-links">
-<ul>
-  <li><a href="https://gback.ir/blog/">بلاگ</a></li>
-  <li><a href="https://gback.ir/about" target="blank">درباره ما</a></li>
-  <li><a href="https://gback.ir/storedetail" target="blank">فروشگاه ها</a></li>
-  <li><a href="https://gback.ir/contact" target="blank">تماس با ما</a></li>
-</ul>
-  </section>
-
-  <section> <p> پشتیبانی جیبک</p>
-  <p>آدرس:
-تهران، جردن، عاطفی غربی، پ ٩٠<br>
-ساعات کاری:
-۹ الی ۱۷</p>
-  <a href=""> <img src="http://www.w3.org/1999/xlink" alt=""></a
-  ><a href=""><img src="" alt=""></a>
-  <a href="https://www.instagram.com/gback.ir/?igsh=dGxwMTRkOW53MDRv#" target="blank"><img src="" alt=""></a>
-   </section>
-
-
-  <section ><a href="https://app.gback.ir/?rf=gback.ir" target="blank"> <button class="footerBtn"> نسحه وب  <img :src="webForm" alt=""> </button></a></section>
-
-</footer>
 </template>
-
-
-
-
 
 
 
@@ -294,7 +246,7 @@ color: white;
   height: 52px;
   border: #d9856d 2px solid;
       font-family: 'Yekan', sans-serif;
-      font-size: 16px;
+      font-size: 20px;
 }
 
 .header-btn:hover{
@@ -330,109 +282,4 @@ border: #d9846d00 2px solid;
   font-size: 20px;
   padding: .5rem 1rem;
 }
-.body{
-  display: flex;
-  justify-content: flex-end;
-  background-color:#232122 ;
-  height:100% ;
-  width: 100%;
-  margin-top: 100px;
-  padding: 200px 80px 0px 200px;
-}
-.categories{
-  position: fixed;
-  right: 10px;
-direction: rtl;
-  width: 200px;
-  height: 400px;
-  background-color:#2a2a2a ;
-  color: white;
-  margin: 20px;
-  border-radius: 12px;
-  padding: 10px;
-  list-style: none;
-  font-size: 18px;
-}
-.categories::selection{
-  color:#3D2122 ;
-}
-.categories p {
-  font-size: 22px;
-}
-.items{
-  padding: 8px 12px;
-  border-bottom: 1px solid #444;
-
-}
-.items:last-child,.items:first-child {
-  border-bottom: none;
-}
-
-.footer{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 160px;
-  width: 100dvw;
-  background-color:#2A2A2A;
-  font-family: 'Yekan', sans-serif;
-  padding: 28px 138px 28px 138px ;
-}
-.footer p{
-  height: 35px;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  direction: rtl;
-  font-size: 18px;
-  color: white;
-  line-height: 24px;
-  margin-bottom: 8px;
-}
-.footer-links ul{
-  list-style: none;
-  display: flex;
-  gap: 2px;
-  direction: rtl;
-flex-direction: column;
-  color: white;
-  margin: 20px;
-  border-radius: 12px;
-  list-style: none;
-  font-size: 18px;
-}
-.footerBtn{
-  width: 188px;
-  height: 52px;
-  border-radius: 14px;
-  background-color:rgba(255, 255, 255, 0);
-  color: white;
-  border: #d9856d 1px solid;
-  font-family: 'Yekan', sans-serif;
-  font-size: 20px;
-  cursor: pointer;
-  text-align: center;
-  transition: all 0.3s ease-in-out;
-}
-.footerBtn:hover{
-  background-color: #8d341a;
-  color: white;
-  border: none;
-  font-family: 'Yekan', sans-serif;
-}
-.government{
-  height: 72px;
-  width: 72px;
-  margin: 0 0 0 11px;
-  background-color: #30281e;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 8px 32px;
-  border-radius: 8px;
-}
-.footer article{
-display: flex;
-}
-
 </style>

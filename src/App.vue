@@ -1,7 +1,7 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
-import MainDesktop from '../src/MainDesktop.vue'
-import MainMobile from '../src/MainMobile.vue'
+import MainDesktop from './views/ShopsDesktop.vue'
+import MainMobile from './views/ShopsMobile.vue'
 
 // reactive flag to detect mobile view
 const isMobile = ref(window.innerWidth < 768)
