@@ -4,7 +4,6 @@ import { ref, onMounted, onUnmounted } from 'vue'
 import logo from '../assets/gbackLogoNavbar.svg'
 import telegram from '../assets/telegramLogo.svg'
 import locationBtn from '../assets/locationLogo.svg'
-import topBanner from '../assets/gbackGifHeader.gif'
 import mGlass from '../assets/mGlass.svg'
 
 const hideHeader = ref(false)
@@ -29,14 +28,14 @@ onUnmounted(() => {
 
 <template>
 <header>
-
-<div class="header-t"><a href="https://app.gback.ir/?rf=gback.ir" target="blank"><img :src="topBanner" alt=""></a> </div>
  <div class="header-m">
 
-
   <section class="tt">
-    <article class="logo"><a href="https://gback.ir/" target="_blank"> <img :src="logo" alt=""></a></article>
     <article><button class="seller"><a href="https://app.gback.ir/?rf=gback.ir" target="_blank"> ورود فروشندگان</a></button></article>
+    <section>
+      <article class="logo"><a href="https://gback.ir/" target="_blank"> <img :src="logo" alt=""></a></article>
+      <article></article>
+    </section>
   </section>
 
         <article class="search">
@@ -89,26 +88,6 @@ html, body {
 a{
     text-decoration: none;
 }
-.header-t{
-
-    width: 100%;
-    height: 30px;
-    background-color:#454545;
-    color: white;
-    padding: 10px 0;
-    line-height: 24px;
-    font-size: 24px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-}
-.header-t img{
-  width: 90%;
-  scale: 2;
-}
-
-
 
 .header-m {
   left: 0;
@@ -122,7 +101,7 @@ a{
   text-align: justify;
   background-color: #232122;
   color: white;
-flex-direction: column;
+  flex-direction: column;
   transition: top 0.3s ease-in-out;
 }
 
@@ -142,7 +121,7 @@ flex-direction: column;
 
 
 .logo{
-  scale: .6;
+  scale: .5;
 }
 
 .search{
@@ -190,7 +169,7 @@ flex-direction: column;
      border: none;
     outline: none;
     color: white;
-        font-family: 'Yekan', sans-serif;
+    font-family: 'Yekan', sans-serif;
     font-weight: 400;
     line-height: 1.5;
     cursor: pointer;
@@ -208,28 +187,9 @@ flex-direction: column;
 }
  .header-m{
   position: fixed;
-  top: 30px;
   z-index: 999;
 }
-.header-t{
-  position: fixed;
-  top: 0;
-  z-index: 1000;
-}
-.header-b{
-  position: fixed;
-  top: 170px;
-  transition: transform 0.3s ease-in-out;
-  width: 100%;
-  background-color: #2a2a2a;
-  color: white;
-  padding: 15px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-family: 'Yekan', sans-serif;
 
-}
 .header-b.hide {
   transform: translateY(-100%);
 }
@@ -246,36 +206,25 @@ flex-direction: column;
     cursor: pointer;
     margin-left: 1rem;
 }
-.header-btn{
-  border-radius: 12px;
-  margin: 0 6px 0 5px;
-  padding: 10px 5px 10px 5px;
-  background-color: #c64925;
-  color: white;
-  text-align: center;
-  width: 90px;
-  height: 40px;
-  border: #d9856d 2px solid;
-  font-family: 'Yekan', sans-serif;
-  font-size: 14px;
-}
+
 
 .header-btn:hover{
 border: #d9846d00 2px solid;
 }
 
 .seller{
-  width: 90px;
-  height: 40px;
-  border-radius: 10px;
+  width: 180px;
+  height: 42px;
+  border-radius: 15px;
   background-color:rgba(255, 255, 255, 0);
   color: white;
   border: #d9856d 1px solid;
   font-family: 'Yekan', sans-serif;
-  font-size: 12px;
+  font-size: 16px;
   cursor: pointer;
   text-align: center;
   transition: all 0.3s ease-in-out;
+
 
 }
 .lSide button:hover{

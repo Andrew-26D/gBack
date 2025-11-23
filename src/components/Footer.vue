@@ -2,7 +2,7 @@
 import { ref, onMounted, onUnmounted } from 'vue'
 import webForm from '../assets/pwaLogo.svg'
 import minimalLogo from '../assets/gbackLogoFooter.svg'
- 
+
 const hideHeader = ref(false)
 let lastScrollY = 0
 const handleScroll = () => {
@@ -24,7 +24,8 @@ onUnmounted(() => {
 </script>
 <template>
 <footer class="footer">
-  <section>
+
+  <section class="footerLogo">
     <img :src="minimalLogo" alt="">
     <article>
       <a href="" class="government"><img src="" alt=""> </a>
@@ -42,7 +43,7 @@ onUnmounted(() => {
 </ul>
   </section>
 
-  <section> <p> پشتیبانی جیبک</p>
+  <section class="footerAddress"> <p> پشتیبانی جیبک</p>
   <p>آدرس:
 تهران، جردن، عاطفی غربی، پ ٩٠<br>
 ساعات کاری:
@@ -53,10 +54,10 @@ onUnmounted(() => {
    </section>
 
 
-  <section ><a href="https://app.gback.ir/?rf=gback.ir" target="blank"> <button class="footerBtn"> نسحه وب  <img :src="webForm" alt=""> </button></a></section>
+  <section class="footerRight"><a href="https://app.gback.ir/?rf=gback.ir" target="blank"> <button class="footerBtn"> نسحه وب  <img :src="webForm" alt=""> </button></a></section>
 
 </footer>
-    
+
 </template>
 
 <style scoped>
@@ -83,10 +84,11 @@ a{
   justify-content: space-between;
   align-items: center;
   height: 160px;
-  width: 100dvw;
+  width: 100%;
   background-color:#2A2A2A;
   font-family: 'Yekan', sans-serif;
   padding: 28px 138px 28px 138px ;
+  gap: 30px;
 }
 .footer p{
   height: 35px;
@@ -99,18 +101,26 @@ a{
   line-height: 24px;
   margin-bottom: 8px;
 }
+.footer-links{min-width: 150px;
+}
+.footerLogo{min-width: 10%;}
+.footerRight{min-width: 10%;}
+.footerAddress{min-width:150px
+}
+
 .footer-links ul{
   list-style: none;
   display: flex;
   gap: 2px;
   direction: rtl;
-flex-direction: column;
+  flex-direction: column;
   color: white;
   margin: 20px;
   border-radius: 12px;
   list-style: none;
   font-size: 18px;
 }
+
 .footerBtn{
   width: 188px;
   height: 52px;

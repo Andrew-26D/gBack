@@ -32,17 +32,22 @@ onUnmounted(() => {
 
 <template>
 <navbar/>
-<div class="body">
-  <section class="bLeft"><ShopList/></section>
-  <section class="bRight">
-    <ul class="categories">
-      <li class="items" > <p>دسته بندی ها</p> </li>
-      <li class="items"> <a href="https://gback.ir/storedetail?id=1">لوازم خانگی</a></li>
-      <li class="items"> <a href="https://gback.ir/storedetail?id=2"> کالای دیجیتال</a></li>
-      <li class="items"> <a href="https://gback.ir/storedetail?id=3">طلا و جواهرات</a></li>
-      <li class="items"> <a href="https://gback.ir/storedetail?id=4">فرش</a></li>
-    </ul>
-  </section>
+
+<div>
+  <div class="main">
+    <section class="space"></section>
+    <section class="bLeft"><ShopList/></section>
+
+    <section class="bRight">
+      <ul class="categories">
+        <li class="items" > <h5>دسته بندی</h5> </li>
+        <li class="items"> <a href="https://gback.ir/storedetail?id=2"> کالای دیجیتال</a></li>
+        <li class="items"> <a href="https://gback.ir/storedetail?id=1">لوازم خانگی</a></li>
+        <li class="items"> <a href="https://gback.ir/storedetail?id=3">طلا و جواهرات</a></li>
+        <li class="items"> <a href="https://gback.ir/storedetail?id=4">فرش</a></li>
+      </ul>
+    </section>
+  </div>
 </div>
 <Footer/>
 
@@ -69,7 +74,7 @@ a{
     color: white;
 }
 
-.body{
+.main{
   display: flex;
   justify-content: flex-end;
   background-color:#232122 ;
@@ -79,32 +84,55 @@ a{
   padding: 200px 80px 0px 110px;
 }
 .bLeft{
-  width: 80%;
+  width: 73%;
 }
 .bRight{
-  width: 20%;
+  width: 15%;
+  min-width:200px;
 }
+.space{
+  width: 12%;
+}
+
+.bRight li{
+display: flex;
+justify-content: start;
+width: 164.5px;
+border-bottom: 1.5px solid #444;
+}
+
 .categories{
+  display: flex;
+  justify-content: start;
+  align-items: start;
+  flex-direction: column;
  direction: rtl;
-  width: 200px;
+  width: 164.5px;
   height: 400px;
-  background-color:#2a2a2a ;
   color: white;
-  margin: 20px 10px 20px ;
-  border-radius: 12px;
-  padding: 10px;
+  margin: 20px  ;
   list-style: none;
-  font-size: 18px;
+  font-family:'Yekan-Light';
+  font-size:16px;
+
+}
+.categories a:hover{
+color:#C64925 ;
+transition:all 0.2s ease-in-out;
 }
 .categories::selection{
   color:#3D2122 ;
+
 }
-.categories p {
-  font-size: 22px;
+.categories h5{
+  font-size: 25px;
+  font-family:'Yekan';
+  font-weight: 200;
+  cursor:default;
 }
 .items{
   padding: 8px 12px;
-  border-bottom: 1px solid #444;
+
 
 }
 .items:last-child,.items:first-child {

@@ -31,10 +31,15 @@ onUnmounted(() => {
 <template>
     <header>
   <div class="header-t"><a href="https://app.gback.ir/?rf=gback.ir" target="blank"><img :src="topBanner" alt=""></a> </div>
+
+
+
  <div class="header-m">
-  <section>
-    <article><button class="header-btn"><a href="https://app.gback.ir/?rf=gback.ir" target="_blank"> دریافت وام</a></button></article>
-  </section>
+
+    <section class="btnSpace">
+      <article><button class="header-btn"><a href="https://app.gback.ir/?rf=gback.ir" target="_blank"> دریافت وام</a></button></article>
+    </section>
+
 
         <article class="search">
 
@@ -49,20 +54,26 @@ onUnmounted(() => {
 
         </article>
 
-        <article class="logo"><a href="https://gback.ir/" target="_blank"> <img :src="logo" alt=""></a></article>
+        <section class="logoSpace">
+          <article class="logo"><a href="https://gback.ir/" target="_blank"> <img :src="logo" alt=""></a></article>
+        </section>
     </div>
 
 
 
  <div class="header-b" :class="{ hide: hideHeader }">
+
         <section class="lSide">
 
             <article><button class="seller"><a href="https://app.gback.ir/?rf=gback.ir" target="_blank"> ورود فروشندگان</a></button></article>
-            <a  class="lSide"  href="https://app.gback.ir/?rf=gback.ir " target="blank">
+
+            <a  class="support"  href="https://app.gback.ir/?rf=gback.ir " target="blank">
                 <p>پشتیبانی آنلاین</p>
                  <img :src="telegram" alt="">
             </a>
         </section>
+
+        <section class="space-1"></section>
         <section>
             <nav class="rSide">
                 <a href="https://gback.ir/about" >درباره جیبک</a>
@@ -107,6 +118,9 @@ a{
     font-size: 24px;
     align-items: center;
     justify-content: center;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
 
 }
 .header-t img{
@@ -116,19 +130,31 @@ a{
 
 }
 .header-m{
-    background-color:#232122;
+background-color:#232122;
 color: white;
  align-items: center;
  display: flex;
  justify-content: space-between;
-
  padding: 24px 150px;
  text-align: justify;
  width: 100%;
  height: 100px;
+ position: fixed;
+top: 55px;
+z-index: 999;
 }
 .header-m section, nav, a{
   color: white;
+}
+.logoSpace{
+  display: flex;
+  justify-content: end;
+  width: 13%;
+  min-width: 170px;
+}
+.btnSpace{
+  width: 13%;
+  min-width: 200px;
 }
 
 .logo{
@@ -136,8 +162,9 @@ color: white;
 }
 
 .search{
+  min-width: 400px;
     height: 52px;
-    width: 757px;
+    width: 74%;
     display: flex;
     justify-content: end;
     align-items: center;
@@ -193,16 +220,6 @@ color: white;
   gap: 10px;
   height: 100%;
 }
- .header-m{
-  position: fixed;
-  top: 55px;
-  z-index: 999;
-}
-.header-t{
-  position: fixed;
-  top: 0;
-  z-index: 1000;
-}
 .header-b{
   position: fixed;
   top: 150px;
@@ -211,7 +228,7 @@ color: white;
   background-color: #2a2a2a;
   color: white;
   line-height: 24px;
-  padding: 15px 150px;
+  padding: 24px 150px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -221,18 +238,16 @@ color: white;
 .header-b.hide {
   transform: translateY(-100%);
 }
+
 .lSide{
+  min-width: 100px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     gap: 5px;
     cursor: pointer;
-}
-.lSide p{
-   font-family: 'Yekan', sans-serif;
-   font-size:18px;
-    cursor: pointer;
-    margin-left: 1rem;
+    width: 22%;
+
 }
 .header-btn{
   border-radius: 14px;
@@ -245,8 +260,8 @@ color: white;
   width: 185px;
   height: 52px;
   border: #d9856d 2px solid;
-      font-family: 'Yekan', sans-serif;
-      font-size: 20px;
+  font-family: 'Yekan', sans-serif;
+  font-size: 20px;
 }
 
 .header-btn:hover{
@@ -254,7 +269,7 @@ border: #d9846d00 2px solid;
 }
 
 .lSide button{
-  width: 188px;
+  width: 185px;
   height: 52px;
   border-radius: 14px;
   background-color:rgba(255, 255, 255, 0);
@@ -273,13 +288,32 @@ border: #d9846d00 2px solid;
   border: none;
   font-family: 'Yekan', sans-serif;
 }
+.space-1{
+  width: 58%;
+}
+.support{
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  gap: 5px;
+}
+.support p{
+   font-family: 'Yekan', sans-serif;
+   font-size:22px;
+    cursor: pointer;
+    margin-left: 1rem;
+}
 
 .rSide {
-
+  width: 20%;
+  min-width: 280px;
   display: flex;
+  justify-content: end;
   gap: 20px;
   font-family: 'Yekan', sans-serif;
   font-size: 20px;
   padding: .5rem 1rem;
+  padding-right: 0;
 }
 </style>

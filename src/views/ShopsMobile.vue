@@ -26,13 +26,27 @@ const showCategories = ref(false)
 const toggleMenu = () => {
   showCategories.value = !showCategories.value
 }
+function detectMobileDevice() {
+  const nav = navigator
+  if (nav.userAgentData && typeof nav.userAgentData.mobile === 'boolean') {
+    return nav.userAgentData.mobile
+  }
+  const ua = nav.userAgent || ''
+  if (/Mobi|Android|iPhone|iPad|iPod|Mobile|Silk/i.test(ua)) return true
+
+  if (/Macintosh/i.test(ua) && 'maxTouchPoints' in navigator && navigator.maxTouchPoints > 1) return true
+  return false
+}
+
+const isMobileDevice = ref(detectMobileDevice())
+
 
 
 </script>
 
-
 <template>
 <NavbarMobile />
+
 <div class="body">
   <section>
 
@@ -50,7 +64,7 @@ const toggleMenu = () => {
     <ShopList />
 </section>
 </div>
-    <nav class="mobile-bottom-nav">
+    <nav v-if="isMobileDevice" class="mobile-bottom-nav">
     <a href="/" class="navItem">
       <span class="icon">🏠</span>
       <span class="label">خانه</span>
@@ -141,73 +155,6 @@ direction: rtl;
   border-bottom: none;
 }
 
-
-/* .footer{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 160px;
-  width: 100dvw;
-  background-color:#2A2A2A;
-  font-family: 'Yekan', sans-serif;
-  padding: 28px 138px 28px 138px ;
-}
-.footer p{
-  height: 35px;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  direction: rtl;
-  font-size: 18px;
-  color: white;
-  line-height: 24px;
-  margin-bottom: 8px;
-}
-.footer-links ul{
-  list-style: none;
-  display: flex;
-  gap: 2px;
-  direction: rtl;
-flex-direction: column;
-  color: white;
-  margin: 20px;
-  border-radius: 12px;
-  list-style: none;
-  font-size: 18px;
-}
-.footerBtn{
-  width: 188px;
-  height: 52px;
-  border-radius: 14px;
-  background-color:rgba(255, 255, 255, 0);
-  color: white;
-  border: #d9856d 1px solid;
-  font-family: 'Yekan', sans-serif;
-  font-size: 20px;
-  cursor: pointer;
-  text-align: center;
-  transition: all 0.3s ease-in-out;
-}
-.footerBtn:hover{
-  background-color: #8d341a;
-  color: white;
-  border: none;
-  font-family: 'Yekan', sans-serif;
-}
-.government{
-  height: 72px;
-  width: 72px;
-  margin: 0 0 0 11px;
-  background-color: #30281e;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 8px 32px;
-  border-radius: 8px;
-}
-.footer article{
-display: flex;
-} */
 
 
 .slide-fade-enter-active,

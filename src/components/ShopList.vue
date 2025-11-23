@@ -98,7 +98,7 @@ onMounted(() => {
 .card {
   background-color: #2a2a2a;
   padding: 16px;
-  border-radius: 12px;
+  border-radius: 20px;
   width: 100%;
   transition: transform 0.2s;
 }

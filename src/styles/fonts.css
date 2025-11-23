@@ -5,7 +5,16 @@
   font-style: normal;
   font-display: swap;
 }
+@font-face {
+  font-family: 'Yekan-Light';
+  src: url('../assets/iranyekanweblight.ttf') format('truetype');
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
 
 html, body {
   font-family: 'Yekan', sans-serif;
+  font-family: 'Yekan-Light', sans-serif;
 }
