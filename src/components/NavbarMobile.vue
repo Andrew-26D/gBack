@@ -2,73 +2,89 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
 import logo from '../assets/gbackLogoNavbar.svg'
-import telegram from '../assets/telegramLogo.svg'
 import locationBtn from '../assets/locationLogo.svg'
 import mGlass from '../assets/mGlass.svg'
+import menu from '../assets/burger-menu.png'
+import insta from '../assets/insta.png'
+import linkedin from '../assets/linkedin.png'
 
-const hideHeader = ref(false)
-let lastScrollY = 0
+// Fixed header
+const fixedHeader = ref(false)
 const handleScroll = () => {
-  if (window.scrollY > lastScrollY) {
-    hideHeader.value = true
-  } else {
-    hideHeader.value = false
-  }
-  lastScrollY = window.scrollY
+  fixedHeader.value = window.scrollY > 100
 }
+onMounted(() => window.addEventListener('scroll', handleScroll))
+onUnmounted(() => window.removeEventListener('scroll', handleScroll))
 
-onMounted(() => {
-  window.addEventListener('scroll', handleScroll)
-})
-
-onUnmounted(() => {
-  window.removeEventListener('scroll', handleScroll)
-})
+// Sidebar
+const sidebarOpen = ref(false)
+const openSidebar = () => sidebarOpen.value = true
+const closeSidebar = () => sidebarOpen.value = false
 </script>
+
+
 
 <template>
 <header>
- <div class="header-m">
 
+<div class="header-t">
   <section class="tt">
-    <article><button class="seller"><a href="https://app.gback.ir/?rf=gback.ir" target="_blank"> ورود فروشندگان</a></button></article>
-    <section>
-      <article class="logo"><a href="https://gback.ir/" target="_blank"> <img :src="logo" alt=""></a></article>
-      <article></article>
+    <article>
+      <button class="seller">
+        <a href="https://app.gback.ir/?rf=gback.ir" target="_blank">ورود فروشندگان</a>
+      </button>
+    </article>
+
+    <section class="rSide">
+      <article class="logo">
+        <a href="https://gback.ir/" target="_blank"><img :src="logo" alt=""></a>
+      </article>
+
+      <article>
+        <a @click.prevent="openSidebar"><img class="icon" :src="menu" alt=""></a>
+      </article>
     </section>
   </section>
+</div>
 
-        <article class="search">
-
-              <section class="inputSearch">
-                <input type="text" placeholder="جستجوی فروشگاه و کالا" dir="rtl">
-                <img :src="mGlass" alt="">
-              </section>
-            <section  class="locationBtn">
-            <button>انتخاب استان</button>
-              <img :src="locationBtn" alt="">
-            </section>
-
-        </article>
-    </div>
- <div class="header-b" :class="{ hide: hideHeader }">
-        <section class="lSide">
-
-            <a  class="lSide"  href="https://app.gback.ir/?rf=gback.ir " target="blank">
-                <p>پشتیبانی آنلاین</p>
-                 <img :src="telegram" alt="">
-            </a>
-        </section>
-        <section>
-            <nav class="rSide">
-                <a href="https://gback.ir/about" >درباره جیبک</a>
-                <a href="https://gback.ir/blog/">بلاگ</a>
-                <a href="https://gback.ir/storedetail">فروشگاه ها</a>
-            </nav>
-        </section>
-    </div>
+<div class="header" :class="{ fixed: fixedHeader }">
+  <article class="search">
+    <section class="inputSearch">
+      <input type="text" placeholder="جستجوی فروشگاه و کالا" dir="rtl">
+      <img :src="mGlass" alt="">
+    </section>
+    <section class="locationBtn">
+      <button>انتخاب استان</button>
+      <img :src="locationBtn" alt="">
+    </section>
+  </article>
+</div>
 </header>
+
+<div 
+  v-if="sidebarOpen" 
+  class="overlay" 
+  @click="closeSidebar">
+</div>
+
+<aside class="sidebar" :class="{ open: sidebarOpen }">
+  
+  <button class="closeBtn" @click="closeSidebar">×</button>
+
+  <nav class="menuList">
+    <a href="#">فروشگاه‌ها</a>
+    <a href="#">فروشندگان</a>
+    <a href="#">وبلاگ</a>
+  </nav>
+
+  <div class="socials">
+    <a href="https://www.instagram.com/gback.ir/?igsh=dGxwMTRkOW53MDRv"><img :src="insta" alt="Instagram"></a>
+    <a href="#"><img :src="linkedin" alt="LinkedIn"></a>
+  </div>
+
+</aside>
 </template>
+
 
 <style scoped>
 html, body {
@@ -88,45 +104,79 @@ html, body {
 a{
     text-decoration: none;
 }
-
-.header-m {
-  left: 0;
-  right: 0;
-  z-index: 999;
+.header-t{
+  width: 100%  ;
+  background-color: #232122;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  flex-direction: row;
+}
+.logo{
+  scale: 0.5;
+}
+.header{
+  background-color: #232122;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 12px 20px;
-  height: 150px;
-  text-align: justify;
-  background-color: #232122;
-  color: white;
-  flex-direction: column;
-  transition: top 0.3s ease-in-out;
+
 }
-
-.tt{
-
+.tt {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between; /* puts left item and right items apart */
   width: 100%;
-
+  margin-inline: 35px;
 }
 
+.rSide {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+.seller{
+  width: 130px;
+  height: 42px;
+  border-radius: 15px;
+  background-color:rgba(255, 255, 255, 0);
 
-.header-m section, nav, a{
+  border: #d9856d 1px solid;
+  font-family: 'Yekan', sans-serif;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.3s ease-in-out;
+}
+.seller a {
   color: white;
 }
-
-
-.logo{
-  scale: .5;
+.seller:hover{
+  background-color: #8d341a;
+  color: white;
+  border: none;
+  font-family: 'Yekan', sans-serif;
 }
+.icon{
+  width: 20px;
+  height: 15px;
+}
+
+.header.fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9999;
+  background-color: #232122;
+  padding-block: 10px;
+}
+
 
 .search{
     height: 52px;
-    width: 100%;
+    width: 90%;
     display: flex;
     justify-content: end;
     align-items: center;
@@ -139,6 +189,7 @@ a{
     font-family: 'Yekan', sans-serif;
     font-size: 12px;
 }
+
 
 .search input{
     height: 24px;
@@ -185,60 +236,63 @@ a{
   gap: 10px;
   height: 100%;
 }
- .header-m{
-  position: fixed;
-  z-index: 999;
-}
-
-.header-b.hide {
-  transform: translateY(-100%);
-}
-.lSide{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 5px;
-    cursor: pointer;
-}
-.lSide p{
-   font-family: 'Yekan', sans-serif;
-   font-size:14px;
-    cursor: pointer;
-    margin-left: 1rem;
-}
-
-
 .header-btn:hover{
 border: #d9846d00 2px solid;
 }
-
-.seller{
-  width: 180px;
-  height: 42px;
-  border-radius: 15px;
-  background-color:rgba(255, 255, 255, 0);
-  color: white;
-  border: #d9856d 1px solid;
-  font-family: 'Yekan', sans-serif;
-  font-size: 16px;
-  cursor: pointer;
-  text-align: center;
-  transition: all 0.3s ease-in-out;
-
-
+.socials img {
+  width: 32px;
+  height: 32px;
 }
-.lSide button:hover{
-  background-color: #8d341a;
-  color: white;
-  border: none;
-  font-family: 'Yekan', sans-serif;
-}
-
-.rSide {
+.socials {
   display: flex;
+  justify-content: center;
   gap: 20px;
-  font-family: 'Yekan', sans-serif;
-  font-size: 12px;
-  padding: .5rem 1rem;
+  padding-bottom: 20px;
 }
+
+.menuList a {
+  color: white;
+  font-size: 18px;
+  padding: 12px 0;
+  display: block;
+  text-decoration: none;
+}
+.closeBtn {
+  background: none;
+  border: none;
+  font-size: 32px;
+  color: white;
+  cursor: pointer;
+  align-self: flex-end;
+}
+
+.sidebar.open {
+  right: 0;
+}
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: -260px;
+  width: 260px;
+  height: 100%;
+  background-color: #1d1c1c;
+  box-shadow: -2px 0 10px rgba(0,0,0,0.3);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  z-index: 9999;
+  transition: right 0.3s ease-in-out;
+}
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.5);
+  z-index: 9000;
+}
+
+
 </style>

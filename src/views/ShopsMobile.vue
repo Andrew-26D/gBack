@@ -2,6 +2,10 @@
 import { ref, onMounted, onUnmounted } from 'vue'
 import NavbarMobile from '../components/NavbarMobile.vue'
 import ShopList from '../components/ShopList.vue'
+import home from '../assets/home.png'
+import shopList from '../assets/shop.png'
+import loan from '../assets/loan.png'
+import setting from '../assets/setting.png'
 
 const hideHeader = ref(false)
 let lastScrollY = 0
@@ -22,10 +26,6 @@ onUnmounted(() => {
   window.removeEventListener('scroll', handleScroll)
 })
 const showCategories = ref(false)
-
-const toggleMenu = () => {
-  showCategories.value = !showCategories.value
-}
 function detectMobileDevice() {
   const nav = navigator
   if (nav.userAgentData && typeof nav.userAgentData.mobile === 'boolean') {
@@ -49,7 +49,6 @@ const isMobileDevice = ref(detectMobileDevice())
 
 <div class="body">
   <section>
-
     <transition name="slide-fade">
       <section v-if="showCategories" class="categories-wrapper">
         <ul class="categories">
@@ -65,21 +64,21 @@ const isMobileDevice = ref(detectMobileDevice())
 </section>
 </div>
     <nav v-if="isMobileDevice" class="mobile-bottom-nav">
-    <a href="/" class="navItem">
-      <span class="icon">🏠</span>
+    <a href="https://gback.ir/" class="navItem">
+      <img class="icon" :src="home" alt="">
       <span class="label">خانه</span>
     </a>
-    <button class="navItem" @click="toggleMenu">
-      <span class="icon">📂</span>
-      <span class="label">دسته‌بندی‌ها</span>
-    </button>
     <a href="https://app.gback.ir/?rf=gback.ir" target="_blank" class="navItem">
-      <span class="icon">💰</span>
-      <span class="label">دریافت وام</span>
+       <img class="icon" :src="loan" alt="">
+      <span class="label">وام</span>
     </a>
-    <a href="/account" class="navItem">
-      <span class="icon">👤</span>
-      <span class="label">حساب</span>
+    <a href="https://app.gback.ir/?rf=gback.ir" target="_blank" class="navItem">
+       <img class="icon" :src="shopList" alt="">
+      <span class="label">لیست فروشگاه ها</span>
+    </a>
+    <a href="https://app.gback.ir/login" class="navItem">
+       <img class="icon" :src="setting" alt="">
+      <span class="label">تنضیمات</span>
     </a>
   </nav>
 </template>
@@ -111,7 +110,6 @@ a{
   background-color:#232122 ;
   height:100% ;
   width: 100%;
-  margin-top: 180px;
   padding:  80px 0px 200px;
 }
 .body >section{
@@ -202,31 +200,44 @@ direction: rtl;
   left: 0;
   right: 0;
   height: 65px;
+  width: 100%;
   background-color: #2a2a2a;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
+  flex-direction: row-reverse;
   align-items: center;
   z-index: 2000;
   border-top: 1px solid #444;
   backdrop-filter: blur(8px);
-}
 
+}
+.navItem:hover{
+  color:#8d341a
+}
+.navItem.active {
+  color:#8d341a;
+  font-weight: 600;
+}
 .mobile-bottom-nav .navItem {
   flex: 1;
-  color: white;
+  color: rgb(183, 183, 183);
   text-align: center;
   font-family: 'Yekan', sans-serif;
   text-decoration: none;
   border: none;
   background: transparent;
   cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-.mobile-bottom-nav .icon {
+/* .mobile-bottom-nav .icon {
   display: block;
   font-size: 22px;
   line-height: 22px;
-}
+} */
 
 .mobile-bottom-nav .label {
   font-size: 11px;
@@ -237,5 +248,9 @@ direction: rtl;
   .mobile-bottom-nav {
     display: none;
   }
+}
+.icon{
+  width: 20px;
+  height:20px;
 }
 </style>

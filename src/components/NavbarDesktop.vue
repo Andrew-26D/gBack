@@ -240,7 +240,7 @@ z-index: 999;
 }
 
 .lSide{
-  min-width: 100px;
+  min-width: 350px;
     display: flex;
     align-items: center;
     justify-content: space-between;

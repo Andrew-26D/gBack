@@ -146,26 +146,18 @@ onMounted(() => {
 }
 
 
+/* HTML: <div class="loader"></div> */
 .loader {
-  display: inline-grid;
-  padding: 5px;
-  filter: blur(4px) contrast(12);
-  margin-top: 1rem;
+  width: 20px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  animation: l5 1s infinite linear alternate;
 }
-.loader:before {
-  content: "";
-  height: 40px;
-  aspect-ratio: 3;
-  --c: #8d000000 64%,#8f0000 66% 98%,#85000000 101%;
-  background:
-    radial-gradient(35% 146% at 50% 159%,var(--c)) 0 0,
-    radial-gradient(35% 146% at 50% -59%,var(--c)) 100% 100%;
-  background-size: calc(200%/3) 50%;
-  background-repeat: repeat-x;
-  background-color: #23212200;
-  animation: l11 .8s infinite linear;
-}
-@keyframes l11 {
-  to {background-position: -200% 0,-100% 100%}
+@keyframes l5 {
+    0%  {box-shadow: 20px 0 #ff0000, -20px 0 rgba(255, 0, 0, 0.133);background: #ff0000 }
+    11% {box-shadow: 20px 0 #ff0000, -20px 0 rgba(255, 0, 0, 0.133);background: rgba(255, 0, 0, 0.133)}
+    33% {box-shadow: 20px 0 #ff0000, -20px 0 rgba(255, 0, 0, 0.133);background: rgba(255, 0, 0, 0.133)}
+    66% {box-shadow: 20px 0 rgba(255, 0, 0, 0.133),-20px 0 #ff0000; background: rgba(255, 0, 0, 0.133)}
+    100%{box-shadow: 20px 0 rgba(255, 0, 0, 0.133),-20px 0 #ff0000; background: #ff0000 }
 }
 </style>
